@@ -1,0 +1,13 @@
+body{
+    background-color: black;
+}
+
+.items{
+    padding-top: 160px;
+    text-align: center;
+    justify-content: center;
+}
+
+p{
+    color: white;
+}
