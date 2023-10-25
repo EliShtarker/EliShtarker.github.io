@@ -68,3 +68,6 @@ button:hover {
 a{
     color: red;
 }
+
+select option[value="text"] { 
+    display: none; 
