@@ -4,62 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecom Fullstack Course</title>
+    <title>CSS</title>
+    <Style>
+        h2 {
+            color: rgb(0, 255, 0);
+            font-size: 6em;
+            margin: 5px;
+        }
+    </Style>
     <link rel="stylesheet" href="css.css">
 </head>
 
+
 <body>
-
-    <div class="list">
-
-        <div id="headerBox">
-            <h1 id="header">Eli Shtarker</h1>
-        </div>
-
-        <div id="hyperLink" onmouseover="transformation()"><a href="https://www.youtube.com/watch?v=i2dzTk2LhWQ" target="_blank">
-                <p id="clickMe" onmouseover="change()">Mr Kitty - After Dark - Electric guitar cover</p>
-            </a></div>
-
-        <div id="imageFrame"><img style="height: 500px; width: 700px;" src="https://picsum.photos/200/300"></div>
-
-        <ul id="orderList">
-            <li>Ynet</li>
-            <li>Facebook</li>
-            <li>Zoom</li>
-            <li>Whatsapp</li>
-        </ul>
-
-        <table id="desk" border="5px">
-            <thead>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Age</th>
-                <th>Course</th>
-            <tbody>
-                <td>Eli</td>
-                <td>Shtarker</td>
-                <td>27</td>
-                <td>Ecom Fullstack Course</td>
-            <tbody>
-                <td>Roba</td>
-                <td>Moadi</td>
-                <td>26</td>
-                <td>Ecom Fullstack Course</td>
-            <tfoot>
-                <td>Ayelet</td>
-                <td>Tanami</td>
-                <td>20</td>
-                <td>Ecom Fullstack Course
-                </td>
-            </tfoot>
-            </thead>
-        </table>
-
-        <script src="js.js"></script>
-
-    </div>
-
+    <h1 onclick="reveal()" style="color: rgb(255,0,0); font-size: 6em; margin: 10px;" id="h1">Red</h1>
+    <h2 onclick="reveal()" id="h2">Blue</h2>
+    <h3 onclick="reveal()" id="h3">Green</h3>
+<script src="js.js"></script>
 </body>
-
 
 </html>

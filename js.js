@@ -1,9 +1,5 @@
-
-function change() {
-    document.getElementById("clickMe").innerHTML = "Click Me";
-}
-
-function transformation() {
-    document.getElementById("hyperLink").style.width = "90px";
-    document.getElementById("hyperLink").style.marginLeft = "44.8%"; 
+function reveal() {
+document.getElementById("h1").innerHTML = "I'm";
+document.getElementById("h2").innerHTML = "So";
+document.getElementById("h3").innerHTML = "Bored";
 }
