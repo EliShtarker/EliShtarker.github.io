@@ -4,76 +4,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The final countdown</title>
+    <title>Document</title>
     <style>
-        body {
+        input {
+            width: 50px;
+            margin: 5px;
+            border: 3px double red;
             color: white;
             background-color: black;
+            border-radius: 5px;
+        }
+
+        button{
+            border: 3px double red;
+            margin-left: 75px;
+            color: white;
+            background-color: black;
+            border-radius: 75px;
+        }  
+
+        body {
+            background-color: black;
             position: absolute;
-            top: 50%; left: 50%;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
-            font-size:xx-large;
-          
-          
         }
 
-        button {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-           
-            background-color: gray;
-            border: 3px solid 1;
-            border-radius: 25px;
-            height: 70px;
-        }
-
-        p {
-            font-weight: bolder;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: black;
-        }
-
-        .hidden {
-            display: none;
+        #container {
+            background-color:gray;
+            height: 470px;
+            width: 250px;
+            border: 5px solid red;
+            border-radius: 15px;
         }
     </style>
 </head>
 
 <body>
-    <audio id="hiddenAudio">
-        <source src="theFinalCountdown.mp3" type="audio/mp3">
-    </audio>
+    <div id="container">
+        <br />
+        <input id="num1" type="number" value="" />
+        +
+        <input id="num2" type="number" value="" />
+        =
+        <input id="result" type="number" />
 
-    <div id="countdown"></div>
-    <button onclick="startCountdown()" id="startButton">
-        <p>Start Countdown</p>
-    </button>
+        <br /><br />
 
+        <button onclick="calc()">calculate result</button>
+
+        <hr />
+        <!--Split code-->
+
+
+        <input id="num3" type="number" value="" />
+        -
+        <input id="num4" type="number" value="" />
+        =
+        <input id="result2" type="number" />
+
+        <br /><br />
+
+        <button onclick="calc2()">calculate result</button>
+
+        <hr />
+        <!--Split code-->
+
+
+        <input id="num5" type="number" value="" />
+        x
+        <input id="num6" type="number" value="" />
+        =
+        <input id="result3" type="number" />
+
+        <br />  <br />
+
+        <button onclick="calc3()">calculate result</button>
+
+        <hr />
+        <!--Split code-->
+
+  
+
+        <input id="num7" type="number" value="" />
+        :
+        <input id="num8" type="number" value="" />
+        =
+        <input id="result4" type="number" />
+
+        <br /> <br />
+
+        <button onclick="calc4()">calculate result</button>
+
+       <hr />
+        <!--Split code-->
+
+
+        <input id="num9" type="number" value="" />
+        %  
+        <input id="num10" type="number" value="" />
+        =
+        <input id="result5" type="number" />
+
+        <br />  <br />
+
+        <button onclick="calc5()">calculate result</button>
+    </div>
     <script>
-        let countdown = 8;
-        let interval;
+        function calc() {
+            let x = document.getElementById("num1").value;
+            let y = document.getElementById("num2").value;
 
-        function updateCountdown() {
-            document.getElementById('countdown').innerHTML = countdown;
-            countdown--;
+            x = parseFloat(x);
+            y = parseFloat(y);
 
-            if (countdown < 0) {
-                clearInterval(interval);
-                document.getElementById('countdown').innerHTML = '<p style="color:red; f">BOOM!<p/>';
-            }
+            document.getElementById("result").value = x + y;
         }
 
-        function startCountdown() {
-            button = document.getElementById('startButton');
-            button.classList.add('hidden');
-            document.getElementById('hiddenAudio').play().then(() => {
-                document.getElementById('hiddenAudio').muted = false;
-                updateCountdown();
-                interval = setInterval(updateCountdown, 1000);
-            });
+
+        function calc2() {
+            let x = document.getElementById("num3").value;
+            let y = document.getElementById("num4").value;
+
+            x = parseFloat(x);
+            y = parseFloat(y);
+
+            document.getElementById("result2").value = x - y;
+        }
+
+
+        function calc3() {
+            let x = document.getElementById("num5").value;
+            let y = document.getElementById("num6").value;
+
+            x = parseFloat(x);
+            y = parseFloat(y);
+
+            document.getElementById("result3").value = x * y;
+        }
+
+
+        function calc4() {
+            let x = document.getElementById("num7").value;
+            let y = document.getElementById("num8").value;
+
+            x = parseFloat(x);
+            y = parseFloat(y);
+
+            document.getElementById("result4").value = x / y;
+        }
+
+
+        function calc5() {
+            debugger;
+            let x = document.getElementById("num9").value;
+            let y = document.getElementById("num10").value;
+
+            x = parseFloat(x) / 100;
+            y = parseFloat(y);
+
+            document.getElementById("result5").value = x * y;
         }
     </script>
+
+
+
 </body>
 
 </html>
