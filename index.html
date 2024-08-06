@@ -4,162 +4,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My CV</title>
     <style>
-        input {
-            width: 50px;
-            margin: 5px;
-            border: 3px double red;
-            color: white;
-            background-color: black;
-            border-radius: 5px;
-        }
-
-        button{
-            border: 3px double red;
-            margin-left: 75px;
-            color: white;
-            background-color: black;
-            border-radius: 75px;
-        }  
-
         body {
-            background-color: black;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
-        #container {
-            background-color:gray;
-            height: 470px;
-            width: 250px;
-            border: 5px solid red;
-            border-radius: 15px;
+        div {
+            border: 2px solid black;
+            width: 80%;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        ul, ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        #mainPage {
+            text-align: center;
+        }
+
+        p, li {
+            margin: 3px 0;
+            font-size: 14px;
+        }
+
+        @media print {
+            body {
+                padding: 10px;
+            }
+
+            div {
+                page-break-inside: avoid;
+                border: 1px solid black;
+                width: 100%;
+                padding: 5px;
+                margin-bottom: 5px;
+                margin-top: 5px;
+            }
+
+            h3 {
+                font-size: 16px;
+            }
+
+            p, li {
+                font-size: 12px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div id="container">
-        <br />
-        <input id="num1" type="number" value="" />
-        +
-        <input id="num2" type="number" value="" />
-        =
-        <input id="result" type="number" />
-
-        <br /><br />
-
-        <button onclick="calc()">calculate result</button>
-
-        <hr />
-
-        <input id="num3" type="number" value="" />
-        -
-        <input id="num4" type="number" value="" />
-        =
-        <input id="result2" type="number" />
-
-        <br /><br />
-
-        <button onclick="calc2()">calculate result</button>
-
-        <hr />
-
-        <input id="num5" type="number" value="" />
-        x
-        <input id="num6" type="number" value="" />
-        =
-        <input id="result3" type="number" />
-
-        <br />  <br />
-
-        <button onclick="calc3()">calculate result</button>
-
-        <hr />
-
-        <input id="num7" type="number" value="" />
-        :
-        <input id="num8" type="number" value="" />
-        =
-        <input id="result4" type="number" />
-
-        <br /> <br />
-
-        <button onclick="calc4()">calculate result</button>
-
-       <hr />
-
-        <input id="num9" type="number" value="" />
-        %  
-        <input id="num10" type="number" value="" />
-        =
-        <input id="result5" type="number" />
-
-        <br />  <br />
-
-        <button onclick="calc5()">calculate result</button>
+    <div id="mainPage">
+        <h3>Eli Shtarker - Fullstack Developer</h3>
+        <p>Phone: 050-4498499</p>
+        <p>Email: <a href="mailto:w4n7i75084d@gmail.com">w4n7i75084d@gmail.com</a></p>
+        <p>GitHub: <a href="https://github.com/EliShtarker?tab=repositories" target="_blank">My GitHub</a></p>
     </div>
-    <script>
-        function calc() {
-            let x = document.getElementById("num1").value;
-            let y = document.getElementById("num2").value;
-
-            x = parseFloat(x);
-            y = parseFloat(y);
-
-            document.getElementById("result").value = x + y;
-        }
-
-
-        function calc2() {
-            let x = document.getElementById("num3").value;
-            let y = document.getElementById("num4").value;
-
-            x = parseFloat(x);
-            y = parseFloat(y);
-
-            document.getElementById("result2").value = x - y;
-        }
-
-
-        function calc3() {
-            let x = document.getElementById("num5").value;
-            let y = document.getElementById("num6").value;
-
-            x = parseFloat(x);
-            y = parseFloat(y);
-
-            document.getElementById("result3").value = x * y;
-        }
-
-
-        function calc4() {
-            let x = document.getElementById("num7").value;
-            let y = document.getElementById("num8").value;
-
-            x = parseFloat(x);
-            y = parseFloat(y);
-
-            document.getElementById("result4").value = x / y;
-        }
-
-
-        function calc5() {
-            let x = document.getElementById("num9").value;
-            let y = document.getElementById("num10").value;
-
-            x = parseFloat(x) / 100;
-            y = parseFloat(y);
-
-            document.getElementById("result5").value = x * y;
-        }
-    </script>
-
-
-
+    <div id="jobs">
+        <h3>Job History</h3>
+        <ol>
+            <li>Factory MOTOPARTS | Warehousing
+                <p>Date: 2023 - 2024</p>
+                <p>Professions:</p>
+                <ul>
+                    <li>Quality Controller</li>
+                </ul>
+            </li>
+            <li>Factory TOOLGAL | Warehousing
+                <p>Date: 2019 - 2022</p>
+                <p>Professions:</p>
+                <ul>
+                    <li>Blueprints</li>
+                    <li>Use of application named Priority</li>
+                </ul>
+            </li>
+            <li>Factory HABONIM | Warehousing
+                <p>Date: 2018 - 2019</p>
+                <p>Professions:</p>
+                <ul>
+                    <li>Organizing</li>
+                    <li>Use of application named BAM</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+    <div id="sideProjects">
+        <h3>Side Projects</h3>
+        <p>Projects I've done not related to my studies but more about learning new things and making my own creations or ideas:</p>
+        <a href="https://github.com/EliShtarker/Random/tree/main/QR%20Code%20Generator" target="_blank">QR Code Generator</a>
+        <br/>
+        <a href="https://github.com/EliShtarker/Random/tree/main/Paycheck" target="_blank">Paycheck</a>
+    </div>
+    <div id="skills">
+        <h3>Skills</h3>
+        <p><b>Programming Languages:</b> JavaScript, HTML, CSS</p>
+        <p><b>Databases:</b> MongoDB, SQL</p>
+        <p><b>Frameworks:</b> Node.js, React, jQuery, Bootstrap</p>
+        <p><b>Currently Studying:</b> TypeScript, Java, DSA</p>
+    </div>
+    <div id="education">
+        <h3>Education</h3>
+        <p>12 years of study</p>
+        <p><b>Course of Study:</b> ICT, Graphic Design</p>
+    </div>
+    <div id="language">
+        <h3>Languages</h3>
+        <p>Hebrew: Basic | English: High Level</p>
+    </div>
 </body>
 
 </html>
