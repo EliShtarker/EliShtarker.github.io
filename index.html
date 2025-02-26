@@ -1,132 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My CV</title>
+    <title>Eli Shtarker - Full Stack Developer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        div {
-            border: 2px solid black;
-            width: 80%;
-            padding: 10px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
-
-        h3 {
-            margin-top: 0;
-            font-size: 18px;
-        }
-
-        ul, ol {
-            margin: 0;
-            padding-left: 20px;
-        }
-
-        #mainPage {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: white;
             text-align: center;
+            padding: 20px;
+            animation: fadeIn 1s ease-in;
+            user-select: none;
         }
 
-        p, li {
-            margin: 3px 0;
-            font-size: 14px;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        @media print {
-            body {
-                padding: 10px;
-            }
+        .container {
+            max-width: 700px;
+            margin: auto;
+            padding: 30px;
+            background: #1e1e1e;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
+            animation: slideIn 1s ease-in-out;
+        }
 
-            div {
-                page-break-inside: avoid;
-                border: 1px solid black;
-                width: 100%;
-                padding: 5px;
-                margin-bottom: 5px;
-                margin-top: 5px;
-            }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
 
-            h3 {
-                font-size: 16px;
-            }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
 
-            p, li {
-                font-size: 12px;
-            }
+        h2 {
+            font-size: 1.8em;
+            color: #00aaff;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .certificate {
+            margin-top: 30px;
+            padding: 20px;
+            background: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+            animation: fadeIn 2s ease-in;
+            position: relative;
+        }
+
+        .certificate img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+            pointer-events: none;
+        }
+
+        .contact {
+            margin-top: 30px;
+            font-size: 1.2em;
+        }
+
+        .contact a {
+            color: #00aaff;
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        a {
+            color: #00aaff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
     </style>
+    <script>
+        document.addEventListener("contextmenu", function(event) {
+            event.preventDefault();
+        });
+        
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "PrintScreen") {
+                event.preventDefault();
+                alert("Screenshotting is disabled!");
+            }
+        });
+    </script>
 </head>
-
 <body>
-    <div id="mainPage">
-        <h3>Eli Shtarker - Fullstack Developer</h3>
-        <p>Phone: 050-4498499</p>
-        <p>Email: <a href="mailto:w4n7i75084d@gmail.com">w4n7i75084d@gmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/EliShtarker?tab=repositories" target="_blank">My GitHub</a></p>
-    </div>
-    <div id="jobs">
-        <h3>Job History</h3>
-        <ol>
-            <li>Factory MOTOPARTS | Warehousing
-                <p>Date: 2023 - 2024</p>
-                <p>Professions:</p>
-                <ul>
-                    <li>Quality Controller</li>
-                </ul>
-            </li>
-            <li>Factory TOOLGAL | Warehousing
-                <p>Date: 2019 - 2022</p>
-                <p>Professions:</p>
-                <ul>
-                    <li>Blueprints</li>
-                    <li>Use of application named Priority</li>
-                </ul>
-            </li>
-            <li>Factory HABONIM | Warehousing
-                <p>Date: 2018 - 2019</p>
-                <p>Professions:</p>
-                <ul>
-                    <li>Organizing</li>
-                    <li>Use of application named BAM</li>
-                </ul>
-            </li>
-        </ol>
-    </div>
-    <div id="sideProjects">
-        <h3>Side Projects</h3>
-        <p>Projects I've done not related to my studies but more about learning new things and making my own creations or ideas:</p>
-        <a href="https://github.com/EliShtarker/Random/tree/main/QR%20Code%20Generator" target="_blank">QR Code Generator</a>
-        <br/>
-        <a href="https://github.com/EliShtarker/Random/tree/main/Paycheck" target="_blank">Paycheck</a>
-    </div>
-    <div id="skills">
-        <h3>Skills</h3>
-        <p><b>Programming Languages:</b> JavaScript, HTML, CSS</p>
-        <p><b>Databases:</b> MongoDB, SQL</p>
-        <p><b>Frameworks:</b> Node.js, React, jQuery, Bootstrap</p>
-        <p><b>Currently Studying:</b> TypeScript, Java, DSA</p>
-    </div>
-    <div id="education">
-        <h3>Education</h3>
-        <p>12 years of study</p>
-        <p><b>Course of Study:</b> ICT, Graphic Design</p>
-    </div>
-    <div id="language">
-        <h3>Languages</h3>
-        <p>Hebrew: Basic | English: High Level</p>
+    <div class="container">
+        <header>
+            <h1>Eli Shtarker</h1>
+            <h2>Full Stack Developer</h2>
+            <p>Graduate of Ecom University, passionate about building scalable, high-performance web applications.</p>
+        </header>
+        
+        <div class="certificate">
+            <h3>Certification</h3>
+            <img src="Untitled.png" alt="Full Stack Developer Certificate">
+        </div>
+
+        <div class="contact">
+            <h3>Contact Me</h3>
+            <p>Phone: <a href="tel:0504498499">050-449-8499</a></p>
+            <p>Email: <a href="mailto:w4n7i75084d@gmail.com">w4n7i750bad@gmail.com</a></p>
+            <p>GitHub: <a href="https://github.com/EliShtarker" target="_blank">github.com/EliShtarker</a></p>
+        </div>
     </div>
 </body>
-
 </html>
