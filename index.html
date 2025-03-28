@@ -3,130 +3,519 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eli Shtarker - Full Stack Developer</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>ELI SHTARKER | CYBERPUNK DEVELOPER</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Oxanium:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --neon-blue: #05d9e8;
+            --neon-pink: #ff2a6d;
+            --matrix-green: #00ff41;
+            --dark: #0d0221;
+            --ui-dark: #1a1a2e;
+            --glow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+            --pink-glow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+            --green-glow: 0 0 10px var(--matrix-green), 0 0 20px var(--matrix-green);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #121212;
-            color: white;
+            font-family: 'Oxanium', sans-serif;
+            background-color: var(--dark);
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        /* ===== LOADING SCREEN ===== */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            font-family: 'Share Tech Mono', monospace;
+        }
+        
+        .loading-header {
+            font-size: clamp(1.5rem, 6vw, 3rem);
+            color: var(--neon-blue);
+            text-shadow: var(--glow);
+            margin-bottom: 2rem;
             text-align: center;
-            padding: 20px;
-            animation: fadeIn 1s ease-in;
-            user-select: none;
+            padding: 0 1rem;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        
+        .loading-bar {
+            width: min(400px, 80%);
+            height: 4px;
+            background: rgba(5, 217, 232, 0.2);
+            position: relative;
+            overflow: hidden;
         }
-
+        
+        .loading-bar::after {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+            animation: loading 2s infinite;
+        }
+        
+        /* ===== MAIN CONTAINER ===== */
         .container {
-            max-width: 700px;
-            margin: auto;
-            padding: 30px;
-            background: #1e1e1e;
-            border-radius: 15px;
-            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
-            animation: slideIn 1s ease-in-out;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease;
         }
-
-        @keyframes slideIn {
-            from { transform: translateY(-20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        
+        /* ===== HEADER ===== */
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(5, 217, 232, 0.3);
+            margin-bottom: 2rem;
         }
-
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 5px;
+        
+        .logo {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: clamp(1.2rem, 5vw, 1.5rem);
+            color: var(--neon-blue);
+            text-shadow: var(--glow);
+            margin-bottom: 1rem;
+            text-align: center;
         }
-
-        h2 {
-            font-size: 1.8em;
-            color: #00aaff;
-            margin-bottom: 20px;
+        
+        nav {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
-
-        p {
-            font-size: 1.2em;
-            line-height: 1.5;
-            margin-bottom: 20px;
+        
+        nav a {
+            color: var(--neon-blue);
+            text-decoration: none;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            padding: 0.3rem 0.6rem;
+            border: 1px solid var(--neon-blue);
+            border-radius: 3px;
+            transition: all 0.3s;
         }
-
-        .certificate {
-            margin-top: 30px;
-            padding: 20px;
-            background: #1e1e1e;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
-            animation: fadeIn 2s ease-in;
+        
+        nav a:hover {
+            background: rgba(5, 217, 232, 0.2);
+            box-shadow: var(--glow);
+        }
+        
+        /* ===== SKILLS MATRIX ===== */
+        .skills-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+            padding: 0 0.5rem;
+        }
+        
+        .skill-category {
+            background: rgba(26, 26, 46, 0.6);
+            border: 1px solid var(--neon-blue);
+            border-radius: 4px;
+            padding: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-category h2 {
+            color: var(--neon-blue);
+            margin-bottom: 1rem;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: clamp(1rem, 4vw, 1.2rem);
             position: relative;
         }
-
-        .certificate img {
+        
+        .skill-category h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
             width: 100%;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+            height: 1px;
+            background: var(--neon-blue);
+        }
+        
+        .skill-item {
+            margin-bottom: 0.6rem;
+            position: relative;
+            padding-left: 1.2rem;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+        }
+        
+        .skill-item::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--matrix-green);
+        }
+        
+        /* ===== CONTACT VAULT ===== */
+        .contact-vault {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid var(--neon-pink);
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-vault h2 {
+            color: var(--neon-pink);
+            font-family: 'Share Tech Mono', monospace;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: clamp(1rem, 4vw, 1.5rem);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .contact-method {
+            background: rgba(5, 217, 232, 0.05);
+            border: 1px solid var(--neon-blue);
+            padding: 1rem;
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-method::after {
+            content: 'CLICK TO DECRYPT';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(13, 2, 33, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--matrix-green);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            transition: all 0.3s;
+        }
+        
+        .contact-method.revealed::after {
+            opacity: 0;
             pointer-events: none;
         }
-
-        .contact {
-            margin-top: 30px;
-            font-size: 1.2em;
+        
+        /* ===== CERTIFICATE VAULT ===== */
+        .certificate-vault {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid var(--matrix-green);
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
         }
-
-        .contact a {
-            color: #00aaff;
-            text-decoration: none;
+        
+        .certificate-vault h2 {
+            color: var(--matrix-green);
+            font-family: 'Share Tech Mono', monospace;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: clamp(1rem, 4vw, 1.5rem);
         }
-
-        .contact a:hover {
-            text-decoration: underline;
+        
+        .certificate-container {
+            background-color: #1a1a2e;
+            border: 1px solid var(--neon-purple);
+            height: 300px;
+            max-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background-image: url('Untitled.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
         }
-
-        a {
-            color: #00aaff;
-            text-decoration: none;
+        
+        /* ===== PROTECTION & ANIMATIONS ===== */
+        @keyframes loading {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
-
-        a:hover {
-            text-decoration: underline;
+        
+        @keyframes floatUp {
+            0% { transform: translateY(10px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        .crt::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+        
+        /* ===== RESPONSIVE TWEAKS ===== */
+        @media (max-width: 600px) {
+            .skills-matrix {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .certificate-container {
+                height: 250px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+            
+            nav a {
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
+</head>
+<body class="crt">
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-header">SYSTEM INITIALIZATION</div>
+        <div class="loading-bar"></div>
+        <div style="margin-top: 2rem; color: var(--matrix-green); font-size: clamp(0.8rem, 3vw, 1rem);">
+            LOADING TECHNICAL PROFILE...
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="container" id="mainContent">
+        <header>
+            <div class="logo">ELI_SHTARKER</div>
+            <nav>
+                <a href="#skills">SKILLS</a>
+                <a href="#contact">CONTACT</a>
+                <a href="#certificate">CREDENTIALS</a>
+            </nav>
+        </header>
+        
+        <!-- Skills Matrix -->
+        <section id="skills">
+            <h1 style="color: white; font-size: clamp(1.5rem, 6vw, 2.5rem); margin-bottom: 0.5rem; text-align: center;">
+                TECHNICAL SKILL MATRIX
+            </h1>
+            <p style="color: #b0b0b0; margin-bottom: 1rem; text-align: center; font-size: clamp(0.9rem, 3vw, 1.1rem);">
+                Current technology competencies and knowledge base
+            </p>
+            
+            <div class="skills-matrix">
+                <div class="skill-category">
+                    <h2>FRONTEND</h2>
+                    <div class="skill-item">HTML5/CSS3</div>
+                    <div class="skill-item">JavaScript (ES6+)</div>
+                    <div class="skill-item">React Fundamentals</div>
+                    <div class="skill-item">Responsive Design</div>
+                </div>
+                
+                <div class="skill-category">
+                    <h2>BACKEND</h2>
+                    <div class="skill-item">Node.js</div>
+                    <div class="skill-item">Express</div>
+                    <div class="skill-item">REST API Concepts</div>
+                    <div class="skill-item">Authentication</div>
+                </div>
+                
+                <div class="skill-category">
+                    <h2>DATABASES</h2>
+                    <div class="skill-item">MongoDB</div>
+                    <div class="skill-item">SQL Basics</div>
+                    <div class="skill-item">Database Design</div>
+                </div>
+                
+                <div class="skill-category">
+                    <h2>OTHER</h2>
+                    <div class="skill-item">Git Version Control</div>
+                    <div class="skill-item">Python Scripting</div>
+                    <div class="skill-item">Java Fundamentals</div>
+                    <div class="skill-item">Data Structures</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Vault -->
+        <section id="contact" class="contact-vault">
+            <h2>>> SECURE CONTACT CHANNELS <<</h2>
+            <div class="contact-grid">
+                <div class="contact-method" data-action="mailto:W4n7i75084d@gmail.com" data-type="email" data-value="W4n7i75084d@gmail.com">
+                    <div class="hidden-data">
+                        <div style="font-size: clamp(1.5rem, 6vw, 2rem); margin-bottom: 0.5rem;">✉️</div>
+                        <h3 style="font-size: clamp(0.9rem, 3vw, 1.1rem);">ENCRYPTED EMAIL</h3>
+                    </div>
+                </div>
+                
+                <div class="contact-method" data-action="tel:0504498499" data-type="phone" data-value="050-4498499">
+                    <div class="hidden-data">
+                        <div style="font-size: clamp(1.5rem, 6vw, 2rem); margin-bottom: 0.5rem;">📱</div>
+                        <h3 style="font-size: clamp(0.9rem, 3vw, 1.1rem);">SECURE LINE</h3>
+                    </div>
+                </div>
+                
+                <div class="contact-method" data-action="https://github.com/EliShtarker" data-type="github" data-value="github.com/EliShtarker">
+                    <div class="hidden-data">
+                        <div style="font-size: clamp(1.5rem, 6vw, 2rem); margin-bottom: 0.5rem;">💻</div>
+                        <h3 style="font-size: clamp(0.9rem, 3vw, 1.1rem);">CODE REPOSITORY</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Certificate Vault -->
+        <section id="certificate" class="certificate-vault">
+            <h2>>> ACADEMIC CREDENTIALS <<</h2>
+            <div class="certificate-container">
+                <div class="certificate-overlay" onclick="revealCertificate(this)">
+                    <!-- Overlay content -->
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 1rem; color: var(--neon-blue); font-family: 'Share Tech Mono', monospace; font-size: clamp(0.7rem, 3vw, 0.9rem);">
+                >> DOCUMENT PROTECTED BY DIGITAL RIGHTS MANAGEMENT <<
+            </p>
+        </section>
+    </div>
+
     <script>
-        document.addEventListener("contextmenu", function(event) {
-            event.preventDefault();
+        // Loading screen transition
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loadingScreen').style.opacity = '0';
+                setTimeout(function() {
+                    document.getElementById('loadingScreen').style.display = 'none';
+                    document.getElementById('mainContent').style.opacity = '1';
+                    document.getElementById('mainContent').style.transform = 'translateY(0)';
+                }, 500);
+            }, 1500);
         });
         
-        document.addEventListener("keydown", function(event) {
-            if (event.key === "PrintScreen") {
-                event.preventDefault();
-                alert("Screenshotting is disabled!");
+        // Contact reveal system
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactMethods = document.querySelectorAll('.contact-method');
+            
+            contactMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    const actionLink = this.getAttribute('data-action');
+                    const type = this.getAttribute('data-type');
+                    const displayValue = this.getAttribute('data-value');
+                    
+                    if(this.classList.contains('revealed')) {
+                        // If already revealed, perform the action
+                        if(type === 'github') {
+                            window.open(actionLink, '_blank');
+                        } else {
+                            window.location.href = actionLink;
+                        }
+                    } else {
+                        // First click - reveal the contact info
+                        let formattedValue;
+                        if(type === 'email') {
+                            formattedValue = displayValue.split('').map(char => 
+                                `<span style="display: inline-block; animation: floatUp ${Math.random()*0.5+0.3}s forwards;">${char}</span>`
+                            ).join('');
+                        } else {
+                            formattedValue = displayValue;
+                        }
+                        
+                        this.innerHTML = `
+                            <div style="color: var(--neon-blue); font-family: 'Share Tech Mono', monospace; font-size: clamp(0.8rem, 3vw, 1rem); word-break: break-all;">
+                                ${formattedValue}
+                            </div>
+                            <div style="font-size: clamp(0.7rem, 2.5vw, 0.8rem); margin-top: 0.5rem; color: var(--matrix-green);">
+                                [ CLICK AGAIN TO ${type === 'github' ? 'OPEN' : type === 'email' ? 'EMAIL' : 'CALL'} ]
+                            </div>
+                        `;
+                        
+                        // Make text non-selectable
+                        const spans = this.querySelectorAll('span');
+                        spans.forEach(span => {
+                            span.style.userSelect = 'none';
+                            span.style.webkitUserSelect = 'none';
+                        });
+                        
+                        this.classList.add('revealed');
+                    }
+                });
+            });
+        });
+        
+        // Certificate reveal system
+        function revealCertificate(element) {
+            element.classList.add('revealed');
+            
+            setTimeout(() => {
+                if(!confirm("Security Protocol: Hide certificate now?")) return;
+                element.classList.remove('revealed');
+            }, 30000);
+        }
+        
+        // Protection against downloads
+        document.addEventListener('contextmenu', function(e) {
+            if(e.target.closest('.certificate-container') || 
+               e.target.closest('.contact-method.revealed')) {
+                e.preventDefault();
+                alert('SECURITY ALERT: Content protected by digital rights');
             }
         });
     </script>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Eli Shtarker</h1>
-            <h2>Full Stack Developer</h2>
-            <p>Graduate of Ecom University, passionate about building scalable, high-performance web applications.</p>
-        </header>
-        
-        <div class="certificate">
-            <h3>Certification</h3>
-            <img src="Untitled.png" alt="Full Stack Developer Certificate">
-        </div>
-
-        <div class="contact">
-            <h3>Contact Me</h3>
-            <p>Phone: <a href="tel:0504498499">Click Here.</a></p>
-            <p>Email: <a href="mailto:w4n7i75084d@gmail.com">Click Here.</a></p>
-            <p>GitHub: <a href="https://github.com/EliShtarker" target="_blank">Click Here.</a></p>
-        </div>
-    </div>
 </body>
 </html>
